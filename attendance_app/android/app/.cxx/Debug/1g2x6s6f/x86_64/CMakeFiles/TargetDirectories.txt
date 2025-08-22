@@ -1,0 +1,2 @@
+/Users/hegirameccamedinasafri/Documents/attendance_app/android/app/.cxx/Debug/1g2x6s6f/x86_64/CMakeFiles/edit_cache.dir
+/Users/hegirameccamedinasafri/Documents/attendance_app/android/app/.cxx/Debug/1g2x6s6f/x86_64/CMakeFiles/rebuild_cache.dir
