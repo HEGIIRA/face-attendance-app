@@ -24,8 +24,8 @@ CORS(app)  # biar aman akses dari emulator/device
 # Simpan encoding sementara di RAM
 TEMP_ENCODINGS = {}  # { temp_id: [128 floats] }
 
-@app.route("/encode_temp", methods=["POST"])
-def encode_temp():
+@app.route("/encode_face", methods=["POST"])
+def encode_face():
     # terima file dari Flutter: field name = 'file'
     file = request.files.get("file")
     if not file:
@@ -85,4 +85,5 @@ def register():
 
 if __name__ == "__main__":
     # jalankan di 0.0.0.0 biar device bisa akses (pakai ngrok kalau di device fisik)
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    port = int(os.environ.get("PORT", 5001))
+    app.run(host="0.0.0.0", port=port, debug=False)

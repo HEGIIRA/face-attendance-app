@@ -15,75 +15,100 @@ class CameraScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
           child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 80.h, horizontal: 32.w),
+        padding: EdgeInsets.symmetric(vertical: 60.h, horizontal: 32.w),
         child: Column(
           children: [
             Header(
-                title: "Tambah Face ID Karyawan",
+                title: "Tambah Face ID",
                 onPressedIcon: () {
                   Get.delete<CameraControllerX>(force: true);
                   Get.back();
                 }),
             SizedBox(height: 40.h),
             CameraBox(),
-            SizedBox(height: 15.h),
+            SizedBox(height: 24.h),
             Obx(() {
-              if (cameraC.isPreviewMode.value) {
-                return Container(
-                  decoration: BoxDecoration(
-                    color: warningLight100,
-                    borderRadius: BorderRadius.circular(10.r)
-                  ),
-                  padding: EdgeInsets.all(10),
-                  child: Text(
-                    cameraC.statusMessage.value,
-                    style: TextStyle(
-                        color: warningLight600,
-                        fontSize: heading5.sp,
-                        fontWeight: FontWeight.w600),
-                  ),
-                );
-              } else {
-                return SizedBox.shrink(); 
-              }
-            }),
+              if (cameraC.statusMessage.value.isEmpty) return SizedBox.shrink();
 
-            Obx(() {
-              if (cameraC.statusMessage.value.contains('Gagal')) {
-               return Column(
-                 children: [
-                   Container(
-                      padding: EdgeInsets.all(10),
-                      color: error100,
-                      child: Text(
-                        cameraC.statusMessage.value,
-                        style: TextStyle(
-                            color: error600,
-                            fontSize: heading5.sp,
-                            fontWeight: FontWeight.w600),
+              bool isError = cameraC.statusMessage.value.contains('Gagal');
+              Color textColor = isError ? error600 : primary600;
+
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  // Container buat status message
+                  Text(
+                      cameraC.statusMessage.value,
+                      style: TextStyle(
+                          color: textColor,
+                          fontSize: heading5.sp,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  // Button cuma muncul kalo error
+                  if (isError)
+                    Padding(
+                      padding: EdgeInsets.only(top: 24.h),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () async {
+                                await cameraC.restartCamera();
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: primary600,
+                                foregroundColor: Colors.white,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 50.w,
+                                    vertical: 15.h),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.r),
+                                ),
+                              ),
+                              child: 
+                              Text(
+                                'Coba Lagi',
+                                style: TextStyle(
+                                  fontSize: heading3.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          SizedBox(width: 15.w),
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () async {
+                                await cameraC.restartCamera();
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: text100,
+                                foregroundColor: Colors.white,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 50.w,
+                                    vertical: 15.h),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.r),
+                                ),
+                              ),
+                              child: Text(
+                                'Hubungi Admin',
+                                style: TextStyle(
+                                  fontSize: heading4.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: text300
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    Row(
-                      children: [ 
-                        ElevatedButton(
-                          onPressed: () async {
-                            await cameraC.restartCamera();
-                          },
-                          child: const Text(
-                            'Coba Lagi',
-                          ),
-                        ),
-                      ]
-                    )
-                 ],
-               );
-               
-          
-              } else {
-                return SizedBox.shrink(); 
-              }
+                ],
+              );
             }),
-
             Obx(() {
               if (!cameraC.isPreviewMode.value) {
                 return IconButton(

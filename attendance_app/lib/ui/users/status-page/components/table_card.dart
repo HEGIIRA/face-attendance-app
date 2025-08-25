@@ -44,14 +44,18 @@ class TableCard extends StatelessWidget {
                 children: [
                   Expanded(
                       flex: 1,
-                      child: Text('No.',
-                          style: TextStyle(
-                              fontSize: heading5.sp, fontWeight: FontWeight.w700, color: Colors.white))),
+                      child: Center(
+                        child: Text('No.',
+                            style: TextStyle(
+                                fontSize: heading5.sp, fontWeight: FontWeight.w700, color: Colors.white)),
+                      )),
                   Expanded(
                       flex: 3,
-                      child: Text('Nama Karyawan',
-                          style: TextStyle(
-                              fontSize: heading5.sp, fontWeight: FontWeight.w700, color: Colors.white))),
+                      child: Center(
+                        child: Text('Nama Karyawan',
+                            style: TextStyle(
+                                fontSize: heading5.sp, fontWeight: FontWeight.w700, color: Colors.white)),
+                      )),
                   Expanded(
                       flex: 2,
                       child: Center(
@@ -91,9 +95,9 @@ class TableCard extends StatelessWidget {
                   children: [
                     Expanded(
                       flex: 1,
-                      child: Text('${(index + 1).toString().padLeft(2, '0')}'),
+                      child: Center(child: Text('${(index + 1).toString().padLeft(2, '0')}')),
                     ),
-                    Expanded(flex: 3, child: Text(item.name)),
+                    Expanded(flex: 3, child: Center(child: Text(item.name))),
                     Expanded(flex: 2, child: Center(child: Text(item.checkIn ?? '-'))),
                     Expanded(flex: 2, child: Center(child: Text(item.checkOut ?? '-'))),
                     Expanded(

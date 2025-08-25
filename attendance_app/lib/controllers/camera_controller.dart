@@ -11,7 +11,7 @@ class CameraControllerX extends GetxController {
   var statusMessage = ''.obs;
   RxBool isPreviewMode = false.obs;
   Rx<XFile?> lastCapturedImage = Rx<XFile?>(null);
-  final baseUrl = 'https://a45591d44a96.ngrok-free.app';
+  final baseUrl = 'https://01305d85b8e6.ngrok-free.app';
   RxString tempFaceId = ''.obs;
 
   CameraController? get cameraController => _controller;
@@ -36,14 +36,14 @@ class CameraControllerX extends GetxController {
 
       _controller = CameraController(
         frontCamera,
-        ResolutionPreset.low,
+        ResolutionPreset.medium,
         enableAudio: false,
       );
 
       await _controller!.initialize();
       isCameraInitialized.value = true;
       statusMessage.value =
-          'Arahkan wajah karyawan ke kamera untuk mulai pendaftaran'; // reset pesan
+          'Arahkan wajah ke kamera untuk mulai pendaftaran'; // reset pesan
     } catch (e) {
       statusMessage.value = 'Error init kamera: $e';
     }
@@ -77,8 +77,10 @@ class CameraControllerX extends GetxController {
       await Future.delayed(const Duration(milliseconds: 800));
       // bawa tempId ke form
       Get.toNamed('/form-register', arguments: {'tempId': tempFaceId.value});
+      print('Respon Python: $res');
+
     } else {
-      statusMessage.value = 'Gagal: Muka tidak terdeteksi, coba lagi.';
+      statusMessage.value = 'Gagal : Muka tidak terdeteksi, coba lagi.';
     }
 
     // Kirim ke Python buat face recognition
