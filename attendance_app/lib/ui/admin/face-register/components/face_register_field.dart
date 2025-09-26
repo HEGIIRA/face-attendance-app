@@ -6,11 +6,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class FaceRegisterField extends StatelessWidget {
+  final TextEditingController nameController;
+  final TextEditingController positionController;
   final GlobalKey<FormState> formKey;
 
-  FaceRegisterField({super.key, required this.formKey});
+  FaceRegisterField({super.key, required this.formKey, required this.nameController, required this.positionController});
 
-  final controller = Get.find<EmployeeController>();
+  final employeeC = Get.find<EmployeeController>();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class FaceRegisterField extends StatelessWidget {
           // Nama Lengkap
           CustomField(
             label: "Nama Lengkap",
-            controller: TextEditingController(),
+            controller: nameController,
             validator: (value) {
               if (value == null || value.isEmpty) return 'Wajib diisi';
               return null;
@@ -33,9 +35,9 @@ class FaceRegisterField extends StatelessWidget {
           // Bidang (Dropdown)
           Obx(() => CustomDropdown(
                 label: "Bidang",
-                value: controller.field.value.isEmpty
+                value: employeeC.division.value.isEmpty
                     ? null
-                    : controller.field.value,
+                    : employeeC.division.value,
                 items: [
                   "APTIKA",
                   "PIKP",
@@ -44,7 +46,7 @@ class FaceRegisterField extends StatelessWidget {
                   "Sekretariat"
                 ],
                 onChanged: (val) {
-                  controller.field.value = val ?? "";
+                  employeeC.division.value = val ?? "";
                 },
                 validator: (val) {
                   if (val == null || val.isEmpty) {
@@ -58,8 +60,7 @@ class FaceRegisterField extends StatelessWidget {
           // Posisi
           CustomField(
             label: "Posisi",
-            controller: TextEditingController(),
-            isPassword: false,
+            controller: positionController,
             validator: (value) {
               if (value == null || value.isEmpty) return 'Wajib diisi';
               return null;

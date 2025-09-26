@@ -33,7 +33,7 @@ class CategoryRegisterScreen extends StatelessWidget {
             SizedBox(height: 70.h),
             CategorySelector(
               onCategorySelected: (selectedCategory) {
-                authC.field.value = selectedCategory;
+                authC.division.value = selectedCategory;
                 //print("Yang dipilih: $selectedCategory");
               },
             ),
@@ -44,7 +44,7 @@ class CategoryRegisterScreen extends StatelessWidget {
                 child: CustomButton(
                   text: "Daftar",
                   onPressed: () async {
-                    if (authC.field.value.isEmpty) {
+                    if (authC.division.value.isEmpty) {
                       Get.snackbar("Error", "Pilih bidang dulu bor");
                       return;
                     }

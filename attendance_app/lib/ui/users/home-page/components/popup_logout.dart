@@ -18,8 +18,8 @@ void popupLogout(BuildContext context) {
         child: Material(
             color: const Color.fromARGB(0, 91, 209, 224),
             child: Container(
-              width: 400,
-              padding: EdgeInsets.symmetric(horizontal: 50.w, vertical: 60.h),
+              width: 655.w,
+              padding: EdgeInsets.symmetric(horizontal: 58.w, vertical: 70.h),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
@@ -31,11 +31,12 @@ void popupLogout(BuildContext context) {
                     "Yakin ingin log out?",
                     style: TextStyle(
                       color: text400,
-                      fontSize: heading4.sp,
-                      fontWeight: FontWeight.bold,
+                      fontSize: heading1.sp,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
-                  SizedBox(height: 30.h),
+                  SizedBox(height: 35.h),
+                  
                   Row(
                     children: [
                       Expanded(
@@ -43,7 +44,7 @@ void popupLogout(BuildContext context) {
                             onPressed: Get.back,
                             child: Text("Batal",
                                 style: TextStyle(
-                                    fontSize: heading5.sp, color: text300)),
+                                    fontSize: heading4.sp, color: text300)),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: text100,
                               foregroundColor: Colors.white,
@@ -52,7 +53,7 @@ void popupLogout(BuildContext context) {
                               ),
                               padding: EdgeInsets.symmetric(
                                 horizontal: 40.w,
-                                vertical: 12.h,
+                                vertical: 16.h,
                               ),
                             )),
                       ),
@@ -65,7 +66,7 @@ void popupLogout(BuildContext context) {
                             },
                             child: Text("Logout",
                                 style: TextStyle(
-                                    fontSize: heading5.sp,
+                                    fontSize: heading4.sp,
                                     color: Colors.white)),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: error300,
@@ -75,7 +76,7 @@ void popupLogout(BuildContext context) {
                               ),
                               padding: EdgeInsets.symmetric(
                                 horizontal: 40.w,
-                                vertical: 12.h,
+                                vertical: 16.h,
                               ),
                             )),
                       ),

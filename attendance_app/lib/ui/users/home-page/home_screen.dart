@@ -5,6 +5,7 @@ import 'package:attendance_app/ui/admin/dashboard-admin/dashboard_admin_screen.d
 import 'package:attendance_app/ui/components-general/main_header.dart';
 import 'package:attendance_app/ui/users/admin-mode-page/admin_mode_screen.dart';
 import 'package:attendance_app/ui/users/home-page/components/popup_logout.dart';
+import 'package:attendance_app/ui/users/status-2/status_2_screen.dart';
 import 'package:attendance_app/ui/users/status-page/status_screen.dart';
 import 'package:attendance_app/ui/users/home-page/components/date_and_time.dart';
 import 'package:attendance_app/ui/users/home-page/components/location.dart';
@@ -18,7 +19,7 @@ class HomeScreen extends StatelessWidget {
   // final controller = Get.find<AttendanceController>();
   final authC = Get.find<AuthController>();
 
-  HomeScreen ({super.key});
+  HomeScreen ({super.key}); 
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +31,11 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               MainHeader(
-                title: authC.currentUser.value?.bidang ?? 'Beranda', 
+                title: authC.currentUser.value?.division ?? 'Beranda', 
                 icon1: Icons.history,
                 icon2: Icons.admin_panel_settings_outlined,
                 icon3: Icons.logout,
-                onIcon1Pressed: () => Get.to(StatusScreen()),
+                onIcon1Pressed: () => Get.to(Status2Screen()),
                 onIcon2Pressed: () => Get.to(AdminModeScreen()),
                 onIcon3Pressed: () {popupLogout(context);}
               ),

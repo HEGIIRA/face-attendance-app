@@ -16,14 +16,11 @@ class _CategorySelectorState extends State<CategorySelector> {
   String? selectedCategory;
 
   final List<String> categories = [
-    "Aptika",
-    "Persandian",
-    "Statistik",
-    "PIPK",
-    "Perencanaan",
-    "Keuangan dan Aset",
-    "Infrastruktur TIK",
-    "Diseminasi informasi"
+    'IT',
+    'PIPK',
+    'Aptika',
+    'Persandian dan Statistik',
+    'Sekretariat',
   ];
 
   @override

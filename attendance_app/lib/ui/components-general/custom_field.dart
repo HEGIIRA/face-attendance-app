@@ -32,7 +32,7 @@ class _CustomFieldState extends State<CustomField> {
           widget.label,
           style: TextStyle(fontSize: heading5.sp, fontWeight: FontWeight.w600),
         ),
-        SizedBox(height: 16.h),
+        SizedBox(height: 10.h),
         TextFormField(
           style: TextStyle(
               fontSize: heading5.sp,

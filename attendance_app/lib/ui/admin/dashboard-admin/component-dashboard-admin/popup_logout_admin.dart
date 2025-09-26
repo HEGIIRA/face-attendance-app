@@ -1,6 +1,7 @@
 import 'package:attendance_app/ui/const.dart';
 import 'package:attendance_app/ui/users/home-page/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 
@@ -17,8 +18,8 @@ void popupLogoutAdmin(BuildContext context) {
         child: Material(
             color: const Color.fromARGB(0, 91, 209, 224),
             child: Container(
-              width: 500,
-              padding: EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+              width: 655.w,
+              padding: EdgeInsets.symmetric(horizontal: 58.w, vertical: 70.h),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
@@ -30,11 +31,11 @@ void popupLogoutAdmin(BuildContext context) {
                     "Yakin keluar dari mode admin?",
                     style: TextStyle(
                       color: text400,
-                      fontSize: heading4,
-                      fontWeight: FontWeight.bold,
+                      fontSize: heading1.sp,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
-                  SizedBox(height: 50),
+                  SizedBox(height: 35.h),
                   Row(
                     children: [
                       Expanded(
@@ -44,7 +45,7 @@ void popupLogoutAdmin(BuildContext context) {
                             },
                             child: Text("Batal",
                                 style: TextStyle(
-                                    fontSize: heading5, color: text300)),
+                                    fontSize: heading4.sp, color: text300)),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: text100,
                               foregroundColor: Colors.white,
@@ -52,12 +53,12 @@ void popupLogoutAdmin(BuildContext context) {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               padding: EdgeInsets.symmetric(
-                                horizontal: 40,
-                                vertical: 10,
+                                horizontal: 40.w,
+                                vertical: 20.h,
                               ),
                             )),
                       ),
-                      SizedBox(width: 16),
+                      SizedBox(width: 16.w),
                       Expanded(
                         child: ElevatedButton(
                             onPressed: () {
@@ -65,7 +66,7 @@ void popupLogoutAdmin(BuildContext context) {
                             },
                             child: Text("Keluar",
                                 style: TextStyle(
-                                    fontSize: heading5, color: Colors.white)),
+                                    fontSize: heading4.sp, color: Colors.white)),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: error300,
                               foregroundColor: Colors.white,
@@ -73,8 +74,8 @@ void popupLogoutAdmin(BuildContext context) {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               padding: EdgeInsets.symmetric(
-                                horizontal: 40,
-                                vertical: 10,
+                                horizontal: 40.w,
+                                vertical: 20.h,
                               ),
                             )),
                       ),

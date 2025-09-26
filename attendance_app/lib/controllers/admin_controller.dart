@@ -3,12 +3,8 @@ import 'package:get/get.dart';
 
 
 class AdminController extends GetxController {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   var isAdminMode = false.obs;
   var adminCode = ''.obs;
-
-
-
 
   Future<bool> validateAdminCode() async {
     try {

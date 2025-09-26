@@ -12,15 +12,17 @@ class AuthController extends GetxController {
   //UNTUK NAMPUNG SEMENTARA SEBELUM KLIK BUTTON DAFTAR
   var email = ''.obs;
   var password = ''.obs;
-  var field = ''.obs;
+  var division = ''.obs;
 
-
+  var divisionList = <String>[].obs;  
+  var selectedDivision = "Semua".obs;
   Rx<UserModel?> currentUser = Rx<UserModel?>(null);
   RxBool isLoggedIn = false.obs;
 
 @override
   void onInit() {
     super.onInit();
+    fetchFields();
     // auto sinkron UID tiap kali state auth berubah
     _auth.authStateChanges().listen((user) async {
       if (user != null) {
@@ -70,7 +72,7 @@ void onChangedPassword(String value) {
         .doc(userCredential.user!.uid)
         .set({
       'email': email.value.trim(), //trim untuk hapus spasi di depan dan belakang value
-      'bidang': field.value,
+      'bidang': division.value,
     });
 
 
@@ -124,6 +126,42 @@ void onChangedPassword(String value) {
     currentUser.value = null;
     isLoggedIn.value = false;
   }
+
+  // void fetchFields() async {
+  //   try {
+  //     final snapshot =
+  //         await FirebaseFirestore.instance.collection('users').get();
+
+  //     // ambil field "bidang" dari tiap dokumen
+  //     final bidangList =
+  //         snapshot.docs.map((doc) => doc['bidang'] as String).toList();
+
+  //     // hapus duplikat biar rapi
+  //     fieldList.assignAll(bidangList.toSet().toList());
+  //   } catch (e) {
+  //     print('Error fetch bidang: $e');
+  //   }
+  // }
+
+  void fetchFields() async {
+  try {
+    final snapshot =
+        await FirebaseFirestore.instance.collection('users').get();
+
+    final bidangList = snapshot.docs
+        .map((doc) => doc.data().containsKey('bidang') ? doc['bidang'] as String : null)
+        .whereType<String>()
+        .toSet()
+        .toList();
+
+    // tambahin opsi "Semua" di paling atas
+    divisionList.assignAll(['Semua', ...bidangList]);
+  } catch (e) {
+    print('Error fetch bidang: $e');
+  }
+}
+
+
 }
 
 

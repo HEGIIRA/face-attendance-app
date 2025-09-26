@@ -1,7 +1,9 @@
+import 'package:attendance_app/ui/admin/rekap-detail/rekap_detail_screen.dart';
 import 'package:attendance_app/ui/const.dart';
 import 'package:attendance_app/ui/admin/dashboard-admin/component-dashboard-admin/rekap_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class RekapKehadiran extends StatelessWidget {
   const RekapKehadiran({super.key});
@@ -18,18 +20,21 @@ class RekapKehadiran extends StatelessWidget {
             Text(
               'Rekap Kehadiran Hari Ini',
               style:
-                  TextStyle(fontSize: heading4.sp, fontWeight: FontWeight.w600),
+                  TextStyle(fontSize: heading4.sp),
             ),
-            Text(
-              'Lihat Semua',
-              style: TextStyle(
+            TextButton(
+                child: Text(
+                'Lihat Semua',
+                style: TextStyle(
                   fontSize: body1.sp,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w600,
                   color: primary600),
+              ),
+              onPressed: () {Get.to(RekapDetailScreen());},
             ),
           ],
         ),
-        SizedBox(height: 28.h),
+        SizedBox(height: 20.h),
 
         GridView.count(
           //gridview untuk nampilin kotak2 ke bawah, mirip listview yg vertikal satu2 ke bawah

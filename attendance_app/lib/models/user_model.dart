@@ -1,16 +1,16 @@
 class UserModel {
   final String email;
-  final String bidang;
+  final String division;
 
   UserModel({
     required this.email,
-    required this.bidang,
+    required this.division,
   });
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
       email: map['email'] ?? '',
-      bidang: map['bidang'] ?? '',
+      division: map['division'] ?? '',
     );
   }
 }

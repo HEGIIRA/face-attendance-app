@@ -59,18 +59,18 @@ Widget build(BuildContext context) {
             children: [
               GestureDetector(
                 onTap: onIcon1Pressed,
-                child: Icon(icon1, size: 40.w, color: primary600),
+                child: Icon(icon1, size: 40.h, color: primary600),
               ),
               SizedBox(width: 30.w),
               GestureDetector(
                 onTap: onIcon2Pressed,
-                child: Icon(icon2, size: 40.w, color: primary600),
+                child: Icon(icon2, size: 40.h, color: primary600),
               ),
               if (icon3 != null) ...[
                 SizedBox(width: 30.w),
                 GestureDetector(
                   onTap: onIcon3Pressed,
-                  child: Icon(icon3, size: 40.w, color: error400),
+                  child: Icon(icon3, size: 40.h, color: error400),
                 ),
               ],
             ],

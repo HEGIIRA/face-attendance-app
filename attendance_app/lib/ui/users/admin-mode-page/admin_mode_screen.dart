@@ -51,7 +51,7 @@ class AdminModeScreen extends StatelessWidget {
                         await Get.find<AdminController>().validateAdminCode();
                     if (isValid) {
                       // Arahkan ke dashboard admin
-                      Get.to(() => DashboardAdminScreen());
+                      Get.offAll(() => DashboardAdminScreen());
                     } else {
                       // Tampilkan error
                       Get.snackbar('Gagal', 'Kode salah, coba lagi!');

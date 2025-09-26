@@ -22,7 +22,7 @@ class LoginScreen extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 100.h),
+          padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 46.h),
           child: Column(
             children: [
               Header(

@@ -2,6 +2,8 @@ import 'package:attendance_app/controllers/admin_controller.dart';
 import 'package:attendance_app/controllers/attendance_controller.dart';
 import 'package:attendance_app/controllers/auth_controller.dart';
 import 'package:attendance_app/controllers/camera_binding.dart';
+import 'package:attendance_app/controllers/date_controller.dart';
+import 'package:attendance_app/controllers/employee_controller.dart';
 import 'package:attendance_app/ui/users/register-page/register_screen.dart';
 import 'package:attendance_app/ui/state-management/date_provider.dart';
 import 'package:attendance_app/ui/users/home-page/home_screen.dart';
@@ -16,6 +18,7 @@ import 'package:provider/provider.dart';
 Future<void> main() async {
   //yg di compile ini dlu.
   WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('id_ID', null);
   await Firebase.initializeApp(
       //klo mw pke firebase,initializeapp dulu buat pke layanann firbase yg lain, langkah pertama setelah atur pubspec
       options: const FirebaseOptions(
@@ -30,8 +33,12 @@ Future<void> main() async {
 
   //DAFTARIN CONTROLLER PAKE GETX
   Get.put(AuthController());
+  Get.put(DateController());
   Get.put(AdminController());
   Get.put(AttendanceController());
+  Get.put(EmployeeController());
+  
+  // Get.put(NotificationController());
 
 
   initializeDateFormatting('id_ID', null).then((_) {
